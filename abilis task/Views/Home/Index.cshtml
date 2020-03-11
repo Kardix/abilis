@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model Matrix
+
+
+<div>
+    <div>
+        <table>
+            @foreach (var list in Model.Values)
+            {
+                <tr class="solid">
+                    @foreach (var item in list)
+                    {
+                        <td class="solid @(@item.IsPrime == true ? "prime" : "") @(item.XAxis == null && item.YAxis == null ? "thicc":"")">
+                            <div class="tooltip @((item.XAxis == null && item.YAxis == null) || (item.XAxis == item.YAxis) ? "thic":"") ">
+                                @item.Value
+                                <span class="tooltiptext @(item.XAxis != null && item.YAxis != null ? "" : "hidden" )">
+                                    @item.XAxis x @item.YAxis
+                                </span>
+                            </div>
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+</div>
